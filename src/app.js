@@ -4,11 +4,10 @@ import { initRouter } from './core/router.js';
 import { homeView } from './views/homeView.js';
 import { cameraView } from './views/cameraView.js';
 import { mapView } from './views/mapView.js';
-import { renderAbout } from './views/about.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   const appRoot = document.getElementById('app-root');
-  const views = { home: homeView, camera: cameraView, map: mapView, about: renderAbout };
+  const views = { home: homeView, camera: cameraView, map: mapView };
 
   const header = createNavbar();
   const footer = createFooter();

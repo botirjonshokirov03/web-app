@@ -1,75 +1,291 @@
+/* Import CSS Variables */
+@import url('./variables.css');
+
+/* ==================== GLOBAL LAYOUT ==================== */
+
+body {
+  background: var(--gradient-background);
+  background-attachment: fixed;
+}
+
+/* ==================== HEADER ==================== */
+
 .app-header {
-  color: black;
-  padding: 12px 16px;
+  background: var(--gradient-primary);
+  color: white;
+  padding: var(--spacing-5) var(--spacing-8);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: var(--spacing-6);
+  box-shadow: var(--shadow-xl), var(--glow-primary);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  backdrop-filter: blur(var(--blur-md));
 }
 
 .app-header h1 {
-  font-size: 1.05rem;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-extrabold);
+  color: white;
+  margin: 0;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
+
+/* ==================== NAVIGATION ==================== */
 
 nav {
   display: flex;
-  gap: 8px;
+  gap: var(--spacing-3);
+  flex-wrap: wrap;
 }
 
 .actions {
   display: flex;
-  gap: 8px;
+  gap: var(--spacing-3);
+  align-items: center;
 }
+
+/* ==================== CONTAINER ==================== */
 
 .container {
   flex: 1;
-  padding: 20px;
-  max-width: 1000px;
+  padding: var(--spacing-10) var(--spacing-8);
+  max-width: 1200px;
   margin: 0 auto;
   width: 100%;
+  animation: fadeIn var(--duration-slow) var(--ease-out);
+}
+
+/* ==================== FOOTER ==================== */
+
+.app-footer {
+  background: var(--color-surface);
+  border-top: var(--border-width-1) solid var(--color-border);
+  padding: var(--spacing-6) var(--spacing-8);
+  margin-top: auto;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .footer-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: var(--spacing-6);
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* Responsive grid */
+/* ==================== GRID SYSTEM ==================== */
+
 .grid-2 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+  gap: var(--spacing-8);
 }
 
-@media (max-width: 720px) {
-  .grid-2 {
-    grid-template-columns: 1fr;
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-8);
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-8);
+}
+
+/* ==================== MOBILE BOTTOM NAVIGATION ==================== */
+
+@media (max-width: 768px) {
+
+  /* Hide top navigation on mobile */
+  .app-header nav {
+    display: none;
+  }
+
+  /* Bottom Navigation Bar */
+  .mobile-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--gradient-primary);
+    padding: var(--spacing-3) var(--spacing-4);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15), var(--glow-primary);
+    z-index: var(--z-fixed);
+    backdrop-filter: blur(var(--blur-lg));
+  }
+
+  .mobile-nav .nav-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-1);
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    padding: var(--spacing-2) var(--spacing-3);
+    border-radius: var(--radius-lg);
+    transition: var(--transition-base);
+    min-width: 64px;
+  }
+
+  .mobile-nav .nav-link .material-icons {
+    font-size: 1.75rem;
+  }
+
+  .mobile-nav .nav-link.active {
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .mobile-nav .nav-link:not(.active):active {
+    transform: scale(0.95);
+  }
+
+  /* Add padding to body to account for bottom nav */
+  body {
+    padding-bottom: 80px;
   }
 }
 
+/* Show mobile nav only on mobile */
+.mobile-nav {
+  display: none;
+}
 
-/* Responsive header layout */
-@media (max-width: 800px) {
+@media (max-width: 768px) {
+  .mobile-nav {
+    display: flex;
+  }
+}
+
+/* ==================== RESPONSIVE BREAKPOINTS ==================== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .container {
+    padding: var(--spacing-8) var(--spacing-6);
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
   .app-header {
+    padding: var(--spacing-4) var(--spacing-5);
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
+    gap: var(--spacing-4);
   }
 
-  nav {
-    flex-wrap: wrap;
+  .app-header h1 {
+    font-size: var(--font-size-xl);
   }
 
   .actions {
     width: 100%;
     justify-content: space-between;
   }
+
+  .container {
+    padding: var(--spacing-6) var(--spacing-5);
+  }
+
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-6);
+  }
+
+  .footer-row {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--spacing-4);
+  }
 }
 
-/* Tablet optimization */
-@media (min-width: 721px) and (max-width: 1024px) {
+/* Mobile */
+@media (max-width: 480px) {
+  .app-header {
+    padding: var(--spacing-4);
+  }
+
+  .app-header h1 {
+    font-size: var(--font-size-lg);
+  }
+
   .container {
-    padding: 16px;
+    padding: var(--spacing-5) var(--spacing-4);
+  }
+
+  .actions {
+    gap: var(--spacing-2);
+  }
+}
+
+/* ==================== UTILITY LAYOUTS ==================== */
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.gap-sm {
+  gap: var(--spacing-2);
+}
+
+.gap-md {
+  gap: var(--spacing-4);
+}
+
+.gap-lg {
+  gap: var(--spacing-8);
+}
+
+/* ==================== PAGE TRANSITIONS ==================== */
+
+.page-enter {
+  animation: pageEnter var(--duration-medium) var(--ease-out);
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
