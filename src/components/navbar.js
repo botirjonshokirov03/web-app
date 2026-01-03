@@ -2,12 +2,11 @@ import { initInstallFlow } from '../core/install.js';
 import { initNotifications } from '../core/notifications.js';
 
 const NAV_ITEMS = [
-  { label: 'Home',    icon: 'home',          route: 'home' },
-  { label: 'Camera',  icon: 'photo_camera',  route: 'camera' },
-  { label: 'Map',     icon: 'map',           route: 'map' },
-  { label: 'About',   icon: 'info',          route: 'about' },
-  { label: 'Install', icon: 'download',      route: '', btnId: 'install-btn' },
-  { label: 'Notify',  icon: 'notifications', route: '', btnId: 'notify-btn' },
+  { label: 'Home', icon: 'home', route: 'home' },
+  { label: 'Camera', icon: 'photo_camera', route: 'camera' },
+  { label: 'Map', icon: 'map', route: 'map' },
+  { label: 'Install', icon: 'download', route: '', btnId: 'install-btn' },
+  { label: 'Notify', icon: 'notifications', route: '', btnId: 'notify-btn' },
 ];
 
 export function createNavbar() {

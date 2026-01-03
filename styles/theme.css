@@ -1,27 +1,104 @@
-:root {
-  --accent: #4F46E5;
-  --bg: #f7f7fb;
-  --card: #fff;
-  --muted: #6b7280;
+/* Import CSS Variables */
+@import url('./variables.css');
 
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --shadow-md: 0 6px 18px rgba(15, 23, 42, 0.06);
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* ==================== THEME CONFIGURATION ==================== */
+
+:root {
+  /* Legacy variable support (mapped to new system) */
+  --accent: var(--color-primary-600);
+  --bg: var(--color-background);
+  --card: var(--color-surface);
+  --muted: var(--color-text-secondary);
+  --radius-sm: var(--radius-base);
+  --radius-md: var(--radius-md);
+  --shadow-md: var(--shadow-md);
+}
+
+/* ==================== GLOBAL STYLES ==================== */
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
-  background: var(--bg);
-  color: #111;
+  font-family: var(--font-primary);
+  background: var(--color-background);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* ==================== TYPOGRAPHY ==================== */
 
-@media (max-width: 600px) {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-4);
+}
+
+h1 {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-extrabold);
+}
+
+h2 {
+  font-size: var(--font-size-2xl);
+}
+
+h3 {
+  font-size: var(--font-size-xl);
+}
+
+h4 {
+  font-size: var(--font-size-lg);
+}
+
+p {
+  margin-bottom: var(--spacing-4);
+  color: var(--color-text-secondary);
+}
+
+/* ==================== RESPONSIVE TYPOGRAPHY ==================== */
+
+@media (max-width: 768px) {
   body {
-    font-size: 15px;
+    font-size: var(--font-size-sm);
   }
 
-  h1, h2, h3 {
-    font-size: 1.1rem;
+  h1 {
+    font-size: var(--font-size-2xl);
+  }
+
+  h2 {
+    font-size: var(--font-size-xl);
+  }
+
+  h3 {
+    font-size: var(--font-size-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: var(--font-size-xl);
+  }
+
+  h2 {
+    font-size: var(--font-size-lg);
+  }
+
+  h3 {
+    font-size: var(--font-size-base);
   }
 }
