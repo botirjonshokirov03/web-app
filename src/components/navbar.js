@@ -14,12 +14,10 @@ export function createNavbar() {
   header.className = 'app-header';
 
   header.innerHTML = `
-    <!-- LOGO -->
     <a href="#home" class="logo-link" data-route="home">
       <img src="/public/assets/logo.svg" alt="PWA Demo" class="logo">
     </a>
 
-    <!-- DESKTOP NAVIGATION -->
     <nav class="nav-bar desktop-nav" aria-label="Main navigation">
       ${NAV_ITEMS.map(item => `
         <a href="#${item.route}"
@@ -32,15 +30,12 @@ export function createNavbar() {
       `).join('')}
     </nav>
 
-    <!-- MOBILE MENU BUTTON -->
     <button class="mobile-menu-btn" aria-label="Open menu">
       <span class="material-icons">menu</span>
     </button>
   `;
 
-  // Create mobile menu panel and overlay separately (outside header)
   const mobileMenuHTML = `
-    <!-- MOBILE MENU PANEL -->
     <div class="mobile-menu-panel">
       <div class="mobile-menu-header">
         <h2>Menu</h2>
@@ -60,16 +55,10 @@ export function createNavbar() {
         `).join('')}
       </nav>
     </div>
-
-    <!-- MOBILE MENU OVERLAY -->
     <div class="mobile-menu-overlay"></div>
   `;
 
-  // -----------------------------------------------------------------
-  // Mobile Menu Toggle
-  // -----------------------------------------------------------------
   requestAnimationFrame(() => {
-    // Append mobile menu to body (not header)
     const tempDiv = document.createElement('div');
     tempDiv.innerHTML = mobileMenuHTML;
     document.body.appendChild(tempDiv.querySelector('.mobile-menu-panel'));
@@ -96,13 +85,8 @@ export function createNavbar() {
     menuBtn?.addEventListener('click', openMenu);
     closeBtn?.addEventListener('click', closeMenu);
     overlay?.addEventListener('click', closeMenu);
+    mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
 
-    // Close menu when clicking a link
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });
-
-    // Initialize PWA helpers
     initInstallFlow();
     initNotifications();
   });

@@ -2,10 +2,6 @@
 
 A modern, vibrant Progressive Web App showcasing native device features with a premium user interface.
 
-![PWA Demo](https://img.shields.io/badge/PWA-Enabled-5A0FC8?style=for-the-badge)
-![Vanilla JS](https://img.shields.io/badge/Vanilla-JavaScript-F7DF1E?style=for-the-badge&logo=javascript)
-![Responsive](https://img.shields.io/badge/Design-Responsive-00D9FF?style=for-the-badge)
-
 ---
 
 ## 🌟 Overview
