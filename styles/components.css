@@ -559,6 +559,194 @@ video {
   }
 }
 
+/* ==================== MOBILE MENU ==================== */
+
+/* Mobile Menu Button */
+.mobile-menu-btn {
+  display: none;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  padding: var(--spacing-3);
+  border-radius: var(--radius-lg);
+  color: white;
+  cursor: pointer;
+  transition: var(--transition-base);
+}
+
+.mobile-menu-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+.mobile-menu-btn .material-icons {
+  font-size: 1.75rem;
+  display: block;
+}
+
+/* Show menu button on mobile, hide desktop nav */
+@media (max-width: 768px) {
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(var(--blur-sm));
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--duration-medium) var(--ease-in-out),
+    visibility var(--duration-medium) var(--ease-in-out);
+  z-index: 9998;
+}
+
+.mobile-menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Mobile Menu Panel */
+.mobile-menu-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 320px;
+  max-width: 85vw;
+  background: var(--color-surface);
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+  transform: translateX(100%);
+  transition: transform var(--duration-medium) var(--ease-out);
+  z-index: 9999;
+  overflow-y: auto;
+}
+
+.mobile-menu-panel.active {
+  transform: translateX(0);
+}
+
+/* Mobile Menu Header */
+.mobile-menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-6) var(--spacing-5);
+  background: var(--gradient-primary);
+  color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-menu-header h2 {
+  margin: 0;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+}
+
+.mobile-menu-close {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  padding: var(--spacing-2);
+  border-radius: var(--radius-lg);
+  color: white;
+  cursor: pointer;
+  transition: var(--transition-base);
+}
+
+.mobile-menu-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(90deg);
+}
+
+.mobile-menu-close .material-icons {
+  font-size: 1.5rem;
+  display: block;
+}
+
+/* Mobile Menu Navigation */
+.mobile-menu-nav {
+  padding: var(--spacing-4) 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-nav-link {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4) var(--spacing-5);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
+  transition: var(--transition-base);
+  border-left: 4px solid transparent;
+  position: relative;
+}
+
+.mobile-nav-link::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  background: var(--gradient-primary-light);
+  transition: width var(--duration-medium) var(--ease-out);
+  z-index: -1;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link:active {
+  border-left-color: var(--color-primary-600);
+  color: var(--color-primary-700);
+}
+
+.mobile-nav-link:hover::before {
+  width: 100%;
+}
+
+.mobile-nav-link .material-icons {
+  font-size: 1.5rem;
+  color: var(--color-primary-600);
+}
+
+.mobile-nav-link:hover .material-icons {
+  transform: scale(1.1);
+}
+
+/* Special styling for Install and Notify buttons in mobile menu */
+.mobile-nav-link[id*="install"],
+.mobile-nav-link[id*="notify"] {
+  margin: var(--spacing-2) var(--spacing-5);
+  padding: var(--spacing-3) var(--spacing-4);
+  background: var(--gradient-primary-light);
+  border-radius: var(--radius-lg);
+  border-left: none;
+  font-weight: var(--font-weight-semibold);
+}
+
+.mobile-nav-link[id*="install"]:hover,
+.mobile-nav-link[id*="notify"]:hover {
+  background: var(--gradient-primary);
+  color: white;
+}
+
+.mobile-nav-link[id*="install"]:hover .material-icons,
+.mobile-nav-link[id*="notify"]:hover .material-icons {
+  color: white;
+}
+
+
 /* ==================== FOOTER ==================== */
 
 .app-footer {
